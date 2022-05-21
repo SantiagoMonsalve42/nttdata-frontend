@@ -1,0 +1,10 @@
+<form [formGroup]="parentform">
+  <div [ngClass]="{'form-group': label !== '', 'input-group' : label === '' }">
+    <label class="mb-2">{{label}}</label><input #input autocomplete="off" [formControlName]="controlName"
+        placeholder="{{placeholder}}" [type]="type" class="form-control " (keyup)="change()" aria-describedby="basic-addon2">
+    <div *ngIf="valid" class="invalid-feedback-per text-danger">
+        <div *ngIf="valid?.['required'] == true">{{label + msgRequired}}</div>
+    </div>
+    <small class="text-muted" *ngIf="descripcion != ''" > {{descripcion}} </small>
+  </div>
+</form>

@@ -1,0 +1,16 @@
+<div class="row p-5 header">
+  <div class="col-9 ms-5">
+    <h2>Where in the world?</h2>
+  </div>
+  <div class="col-2" >
+    <label (click)="switchTheme()">
+      <i class="bi bi-moon" *ngIf="isLigth"></i>
+      <i class="bi bi-moon-fill" *ngIf="!isLigth"></i>
+      Dark Mode
+    </label>
+  </div>
+</div>
+<div class="container mt-2">
+  <router-outlet></router-outlet>
+</div>
+

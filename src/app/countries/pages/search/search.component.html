@@ -1,0 +1,35 @@
+
+
+<form [formGroup]="form">
+  <div class="row mt-2">
+    <div class="col-md-8">
+      <app-input controlName="search" placeholder="Search for a country.." (valueChange)="inputChanged($event)"></app-input>
+    </div>
+    <div class="col-md-2">
+      <app-select controlName="select" [datos]="regions" nombreId="id" nombreDescripcion="description" (valueChange)="selectChanges($event)"></app-select>
+    </div>
+</div>
+<div class="row">
+  <div class=" text-center mt-5" *ngIf="all.length == 0;else isLoaded">
+    <div class="spinner-border text-info " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <ng-template #isLoaded>
+    <div class="col-md-4 mt-4 col-sm-1 col-xl-3 col-xs-1" *ngFor="let item of all">
+      <div class="card" style="width: 100%;">
+        <img class="card-img-top" [src]="item.flags.png" alt="Card image cap" width="100%" height="150px" [routerLink]="'/api/country/'+item.alpha2Code">
+        <div class="card-body">
+          <h5 class="card-title mb-1">{{item.name}}</h5>
+          <p><strong>Population: </strong>{{item.population}}</p>
+          <p><strong>Region: </strong>{{item.region}}</p>
+          <p><strong>Capital: </strong>{{item.capital}}</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+</div>
+
+</form>

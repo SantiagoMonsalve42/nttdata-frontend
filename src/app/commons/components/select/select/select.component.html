@@ -1,0 +1,11 @@
+
+    <form [formGroup]="parentform">
+      <div [ngClass]="{'form-group': label !== '', 'input-group' : label === '' }">
+          <label *ngIf="label !== ''" class="mb-2">{{label}}</label>
+          <select class="form-control form-select" (ngModelChange)="change($event)" [formControlName]="controlName"  >
+              <option value='' selected>Elegir...</option>
+              <option *ngFor="let dato of datos" [value]="getId(dato)">{{getDescripcion(dato)}}</option>
+          </select>
+      </div>
+  </form>
+
